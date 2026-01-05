@@ -1,0 +1,439 @@
+/* --- VARIÁVEIS E RESET --- */
+:root {
+    --primary: #f59e0b; /* Gold Casino */
+    --primary-dark: #b45309;
+    --secondary: #10b981; /* Green Table */
+    --bg-dark: #0b0f19; /* Darker Black/Blue */
+    --bg-card: #161e2e;
+    --text-light: #f8fafc;
+    --text-gray: #94a3b8;
+    --accent: #fbbf24; /* Bright Gold */
+    --success: #10b981;
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --container-width: 1100px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image: radial-gradient(circle at 50% 0%, #1e293b 0%, #0b0f19 60%);
+}
+
+/* --- UTILITÁRIOS --- */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.text-center { text-align: center; }
+.highlight { color: var(--accent); }
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    line-height: 1.2;
+}
+
+/* --- BOTÕES --- */
+.btn {
+    display: inline-block;
+    background: linear-gradient(180deg, #fbbf24 0%, #d97706 100%);
+    color: #0f172a;
+    padding: 20px 35px;
+    border-radius: 50px;
+    font-weight: 800;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #fcd34d;
+    cursor: pointer;
+    font-size: 1.1rem;
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.4), inset 0 2px 0 rgba(255,255,255,0.4);
+    text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.6), inset 0 2px 0 rgba(255,255,255,0.4);
+}
+
+.btn-full { width: 100%; }
+
+/* --- ANIMAÇÕES --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- 1. HERO SECTION --- */
+.hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: white;
+    text-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    margin-bottom: 30px;
+}
+
+/* Elementos Decorativos de Cassino */
+.chip {
+    position: absolute;
+    border-radius: 50%;
+    border: 4px dashed rgba(255,255,255,0.1);
+    background: rgba(0,0,0,0.2);
+    z-index: 1;
+    animation: float 6s ease-in-out infinite;
+}
+
+.chip-1 { width: 100px; height: 100px; top: 10%; left: -20px; border-color: var(--secondary); }
+.chip-2 { width: 150px; height: 150px; bottom: 10%; right: -40px; border-color: var(--primary); animation-delay: 1s; }
+.chip-3 { width: 60px; height: 60px; top: 20%; right: 10%; border-color: #ef4444; animation-delay: 2s; opacity: 0.5; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(10deg); }
+}
+
+/* --- 2. IDENTIFICAÇÃO (DOR) --- */
+.pain-section {
+    padding: 50px 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(16, 185, 129, 0.05) 100%);
+}
+
+.pain-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.pain-card {
+    background: var(--bg-card);
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-top: 4px solid var(--primary);
+}
+
+.pain-card h3 {
+    margin-bottom: 10px;
+    color: white;
+}
+
+/* --- 3. AUTORIDADE EDUCACIONAL --- */
+.education-section {
+    padding: 50px 0;
+    background: rgba(255,255,255,0.02);
+}
+
+.education-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+
+.dopamine-box {
+    background: var(--bg-card);
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.1);
+    max-width: 700px;
+}
+
+/* --- 4. O QUE VOCÊ VAI ENCONTRAR --- */
+.features-section {
+    padding: 50px 0;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.feature-item {
+    text-align: center;
+    padding: 20px;
+}
+
+.icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(245, 158, 11, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: var(--accent);
+}
+
+.icon-box svg { width: 30px; height: 30px; }
+
+/* --- 5. SEÇÃO DO PRODUTO (MOCKUP) --- */
+.product-section {
+    padding: 60px 0;
+    background: linear-gradient(180deg, var(--bg-dark) 0%, #064e3b 100%); /* Green gradient bottom */
+}
+
+.product-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+/* CSS Only Book Mockup */
+.book-mockup {
+    width: 220px;
+    height: 320px;
+    background: linear-gradient(135deg, #000, #1e293b);
+    border-radius: 5px 15px 15px 5px;
+    box-shadow: 
+        inset 4px 0 10px rgba(0,0,0,0.5),
+        10px 10px 30px rgba(0,0,0,0.5),
+        2px 2px 0px #fff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #f59e0b;
+}
+
+.book-mockup::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(255,255,255,0.2);
+}
+
+.book-title {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--primary);
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+.book-subtitle {
+    font-size: 0.8rem;
+    margin-top: 10px;
+    color: var(--accent);
+}
+
+/* --- 6. DIFERENCIAÇÃO --- */
+.diff-section {
+    padding: 50px 0;
+}
+
+.diff-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.diff-card {
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.diff-card.not {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.diff-card.is {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.diff-list li {
+    list-style: none;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* --- 7. PROVA SOCIAL SIMBÓLICA --- */
+.social-proof {
+    padding: 60px 0;
+    background: var(--bg-card);
+    text-align: center;
+}
+
+.quote-box {
+    font-size: 1.4rem;
+    font-style: italic;
+    font-family: var(--font-heading);
+    color: var(--text-light);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* --- 8. PREÇO --- */
+.price-section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.price-card {
+    background: linear-gradient(145deg, #1e293b, #000);
+    padding: 40px 20px;
+    border-radius: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.1);
+    position: relative;
+}
+
+.price-tag {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--success);
+    margin: 20px 0;
+}
+
+.price-anchor {
+    text-decoration: line-through;
+    color: var(--text-gray);
+    font-size: 1.2rem;
+}
+
+.guarantee-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.05);
+    padding: 10px 20px;
+    border-radius: 30px;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+/* --- 9. FAQ --- */
+.faq-section {
+    padding: 50px 0;
+    background: var(--bg-card);
+}
+
+.faq-item {
+    border-bottom: 1px solid #334155;
+    margin-bottom: 10px;
+}
+
+.faq-question {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    color: white;
+    padding: 20px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    color: var(--text-gray);
+}
+
+.faq-answer p {
+    padding-bottom: 20px;
+}
+
+.faq-icon {
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px; /* Altura aproximada */
+}
+
+/* --- 10 & 11. FOOTER & LEGAL --- */
+footer {
+    padding: 60px 0 20px;
+    background: #000;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.disclaimer {
+    border-top: 1px solid #1e293b;
+    margin-top: 40px;
+    padding-top: 20px;
+    font-size: 0.8rem;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (min-width: 768px) {
+    .hero h1 { font-size: 3.5rem; }
+    .pain-grid { grid-template-columns: 1fr 1fr 1fr; }
+    .product-flex { flex-direction: row; justify-content: center; }
+    .diff-grid { grid-template-columns: 1fr 1fr; }
+    .btn-full { width: auto; }
+    .hero h1 { font-size: 3.5rem; }
+}
